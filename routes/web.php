@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use Laravel\Fortify\Fortify;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,16 @@ use App\Http\Controllers\PhotoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home.index');
 });
 
-Route::resource('/gallery', PhotoController::class)->only(['index', 'create', 'store']);
+Route::resource('/home', PhotoController::class)->only(['index', 'create', 'store'])->middleware('auth');
+
+// Auth::routes();
+Fortify::loginView(function () {
+    return view('auth.login');
+});
+
+Fortify::registerView(function () {
+    return view('auth.register');
+});

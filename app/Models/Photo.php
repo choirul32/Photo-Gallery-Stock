@@ -10,6 +10,10 @@ class Photo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'rsc', 'name'
+        'src', 'name', 'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

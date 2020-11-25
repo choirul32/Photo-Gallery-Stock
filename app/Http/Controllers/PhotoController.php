@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Auth;
 
 class PhotoController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -46,13 +48,13 @@ class PhotoController extends Controller
         $fileName = time()."_".$file->getClientOriginalName();
         $target_upload = 'storage/images';
         $file->move($target_upload,$fileName);
-
-        Photo::create([
-            'rsc' => $fileName,
-            'name' => $fileName
+        
+        Auth::user()->photo()->create([
+            'src' => $fileName,
+            'name' => $fileName,
         ]);
 
-        return redirect()->route('gallery.index');
+        return redirect()->route('home.index');
     }
 
     /**
