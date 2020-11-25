@@ -3,7 +3,7 @@
 # Installation
 - Download and Clone this repository
 ```
-sdfds
+https://github.com/choirul32/Photo-Gallery-Stock.git
 ```
 - Create a new database
 - Copy and rename file ```.env.example``` to ```.env```, adn edit database configurations (host, username, password etc)
@@ -23,19 +23,13 @@ php artisan serve
 - laravel ui
 
 # Features
-- Home page
-- Custom Error Page 404
-- Authentication (registration, login, logout, password reset, mail confirmation, throttle)
-- Users roles : administrator (all access), redactor (create and edit post, upload and use medias in personnal directory), and user (create comment in blog)
-- Blog with comments
-- Search in posts
-- Tags on posts
-- Contact us page
-- Admin dashboard with new messages, users, posts and comments
-- Users admin (roles filter, show, edit, delete, create)
-- Messages admin
-- Posts admin (list with dynamic order, show, edit, delete, create)
-- Medias gestion
-- Localisation
+- Gallery page
+- Authentication (registration, login, logout, password reset)
+
 # License
 This library is under MIT license, please look at the LICENSE file
+
+# Test
+To test application the database is seeding with users
+- email : muklisin@gmail.com
+- password : 12345678
