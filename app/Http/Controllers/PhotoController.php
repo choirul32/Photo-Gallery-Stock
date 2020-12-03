@@ -16,7 +16,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $model = Photo::all();
+        $model = Photo::where('user_id', Auth::id())->get();
         return view('gallery', compact('model'));
     }
 
@@ -54,7 +54,7 @@ class PhotoController extends Controller
             'name' => $fileName,
         ]);
 
-        return redirect()->route('home.index');
+        return redirect()->route('gallery.index');
     }
 
     /**
@@ -63,9 +63,10 @@ class PhotoController extends Controller
      * @param  \App\Models\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function show(Photo $photo)
+    public function show($id)
     {
-        //
+        $model = Photo::findOrFail($id);
+        return view('show_image', ['model' => $model]);
     }
 
     /**

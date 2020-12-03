@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\HomeController;
 use Laravel\Fortify\Fortify;
 
 /*
@@ -16,11 +17,11 @@ use Laravel\Fortify\Fortify;
 */
 
 Route::get('/', function () {
-    return redirect()->route('home.index');
+    return redirect()->route('home');
 });
 
-Route::resource('/home', PhotoController::class)->only(['index', 'create', 'store'])->middleware('auth');
-
+Route::resource('/gallery', PhotoController::class)->only(['index', 'create', 'store', 'show'])->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Auth::routes();
 Fortify::loginView(function () {
     return view('auth.login');

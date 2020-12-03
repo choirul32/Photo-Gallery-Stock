@@ -6,7 +6,7 @@
         <h1>Upload Photo</h1>
     </div>
     <div class="form-card">
-        <form method="post" action="{{ route('home.store')}}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('gallery.store')}}" enctype="multipart/form-data">
             @csrf
             <input type="file" name="image" id="file-upload">
             <input type="submit" value="Submit">
