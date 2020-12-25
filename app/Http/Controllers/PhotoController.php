@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Tag;
 
 class PhotoController extends Controller
 {
@@ -38,8 +39,10 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'name_photo' => 'required|string',
         ]);
 
         // menyimpan data file yang diupload ke variabel $file
@@ -49,10 +52,25 @@ class PhotoController extends Controller
         $target_upload = 'storage/images';
         $file->move($target_upload,$fileName);
         
-        Auth::user()->photo()->create([
+        $photo = Auth::user()->photo()->create([
             'src' => $fileName,
-            'name' => $fileName,
+            'name' => $request->name_photo,
         ]);
+
+        if(isset($request->tag_photo)){
+            $tags = explode(',', $request->tag_photo);
+            foreach($tags as $item){
+                $tag = Tag::where('name', $item)->first();
+                if(is_null($tag)){
+                    $model = Tag::create(['name' => $item]);
+                    $photo->tag()->attach($model->id);
+                }else{
+                    $photo->tag()->attach($tag);
+                }
+            }
+            $photo->save();
+            
+        }
 
         return redirect()->route('gallery.index');
     }
