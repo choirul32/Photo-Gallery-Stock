@@ -29,6 +29,12 @@ php artisan serve
 # License
 This library is under MIT license, please look at the LICENSE file
 
+# Contributing
+If you are considering to contribute to this repo. It is really nice.
+
+- Submit Issue if you found any errors or bugs or if you want to propose new feature.
+- Pull Request for bugfix, typo on labels, or new feature.
+
 # Test
 To test application the database is seeding with users
 - email : muklisin@gmail.com
