@@ -22,4 +22,8 @@ class Photo extends Model
     public function tag(){
         return $this->belongsToMany('App\Models\Tag', 'photo_tag', 'photo_id', 'tag_id');
     }
+
+    public function likes(){
+        return $this->hasMany('App\Models\PhotoLike', 'target_id', 'id');
+    }
 }

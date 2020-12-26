@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Photo;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -26,5 +27,11 @@ class HomeController extends Controller
     {
         $model = Photo::all();
         return view('gallery', compact('model'));
+    }
+
+    public function usersList()
+    {
+        $model = User::all();
+        return view('list_user', compact('model'));
     }
 }

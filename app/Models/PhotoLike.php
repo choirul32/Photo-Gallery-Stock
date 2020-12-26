@@ -14,7 +14,7 @@ class PhotoLike extends Model
     protected $fillable = ['*'];
 
     public function photo(){
-        return $this->belongsTo('App\Models\Photo', 'photo_id');
+        return $this->belongsTo('App\Models\Photo', 'target_id');
     }
 
     public function user(){

@@ -44,4 +44,16 @@ class User extends Authenticatable
     public function photo(){
         return $this->hasMany('App\Models\Photo');
     }
+
+    public function photoCount(){
+        return $this->photo()->count();
+    }
+
+    public function allCountLikes(){
+        $count = 0;
+        foreach($this->photo as $item){
+            $count += $item->likes->count();
+        }
+        return $count;
+    }
 }

@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::resource('/gallery', PhotoController::class)->only(['index', 'create', 'store', 'show'])->middleware('auth');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/users', [HomeController::class, 'usersList'])->name('users');
 // Auth::routes();
 Fortify::loginView(function () {
     return view('auth.login');
