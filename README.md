@@ -1,4 +1,4 @@
-# Photo-Gallery-Stock
+<h1 align="center">Photo Gallery Stock</h1>
 
 # Installation
 - Download and Clone this repository
